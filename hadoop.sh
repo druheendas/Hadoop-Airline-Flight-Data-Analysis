@@ -19,7 +19,7 @@ chmod 0600 /home/hduser/.ssh/authorized_keys
 
 
 wget http://mirrors.fibergrid.in/apache/hadoop/common/stable/hadoop-2.9.1.tar.gz
-tar xvzf hadoop-2.9.1.tar.gz
+tar xzf hadoop-2.9.1.tar.gz
 mkdir -p /usr/local/hadoop
 cd hadoop-2.9.1/
 mv * /usr/local/hadoop
@@ -54,8 +54,8 @@ echo '<configuration>
 sudo mkdir -p /usr/local/hadoop_store/hdfs/namenode
 sudo mkdir -p /usr/local/hadoop_store/hdfs/datanode
 sudo chown -R hduser:hadoop /usr/local/hadoop_store
-sed -i '/<configuration>/d' /usr/local/hadoop/etc/hadoop/core-site.xml
-sed -i '\_</configuration>_d' /usr/local/hadoop/etc/hadoop/core-site.xml
+sed -i '/<configuration>/d' /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+sed -i '\_</configuration>_d' /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 echo '<configuration>
 <property>
   <name>dfs.replication</name>
@@ -73,8 +73,8 @@ echo '<configuration>
  </property>
 </configuration>' >> /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 
-sed -i '/<configuration>/d' /usr/local/hadoop/etc/hadoop/core-site.xml
-sed -i '\_</configuration>_d' /usr/local/hadoop/etc/hadoop/core-site.xml
+sed -i '/<configuration>/d' /usr/local/hadoop/etc/hadoop/yarn-site.xml
+sed -i '\_</configuration>_d' /usr/local/hadoop/etc/hadoop/yarn-site.xml
 echo '<configuration>
    <property>
       <name>yarn.nodemanager.aux-services</name>

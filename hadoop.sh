@@ -12,7 +12,7 @@ addgroup hadoop
 adduser --ingroup hadoop hduser
 adduser hduser sudo
 echo '
-hadoop1.sh
+bash hadoop1.sh
 ' >> /home/hduser/.bashrc
 source /home/hduser/.bashrc
 

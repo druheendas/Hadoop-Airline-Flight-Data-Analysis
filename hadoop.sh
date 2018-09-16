@@ -15,3 +15,5 @@ echo '
 hadoop1.sh
 ' >> /home/hduser/.bashrc
 source /home/hduser/.bashrc
+
+reboot now

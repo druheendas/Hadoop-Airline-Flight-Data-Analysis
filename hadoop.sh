@@ -11,8 +11,9 @@ source /etc/environment
 addgroup hadoop
 adduser --ingroup hadoop hduser
 adduser hduser sudo
+cp hadoop1.sh /home/hduser
 echo '
-bash hadoop1.sh
+sudo bash hadoop1.sh
 ' >> /home/hduser/.bashrc
 source /home/hduser/.bashrc
 

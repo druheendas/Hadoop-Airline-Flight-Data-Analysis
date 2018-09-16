@@ -1,15 +1,15 @@
-sudo ssh-keygen -t rsa -P ""
+ssh-keygen -t rsa -P ""
 cat $HOME/.ssh/id_rsa.pub >> /home/hduser/.ssh/authorized_keys
-sudo chmod 0600 /home/hduser/.ssh/authorized_keys
+chmod 0600 /home/hduser/.ssh/authorized_keys
 
 
 wget http://mirrors.fibergrid.in/apache/hadoop/common/stable/hadoop-2.9.1.tar.gz
 tar xzf hadoop-2.9.1.tar.gz
-sudo mkdir -p /usr/local/hadoop
+mkdir -p /usr/local/hadoop
 cd hadoop-2.9.1/
-sudo mv * /usr/local/hadoop
-sudo chown -R hduser:hadoop /usr/local/hadoop
-sudo echo 'export HADOOP_HOME=/usr/local/hadoop
+mv * /usr/local/hadoop
+chown -R hduser:hadoop /usr/local/hadoop
+echo 'export HADOOP_HOME=/usr/local/hadoop
 export HADOOP_INSTALL=$HADOOP_HOME
 export HADOOP_MAPRED_HOME=$HADOOP_HOME
 export HADOOP_COMMON_HOME=$HADOOP_HOME
@@ -21,11 +21,11 @@ source /home/hduser/.bashrc
 
 #sed 's+${JAVA_HOME}+/usr/lib/jvm/java-8-oracle+' /usr/local/hadoop/etc/hadoop/hadoop-env.sh
 
-sudo mkdir -p /app/hadoop/tmp
-sudo chown hduser:hadoop /app/hadoop/tmp
-sudo sed -i '/<configuration>/d' /usr/local/hadoop/etc/hadoop/core-site.xml
-sudo sed -i '\_</configuration>_d' /usr/local/hadoop/etc/hadoop/core-site.xml
-sudo echo '<configuration>
+mkdir -p /app/hadoop/tmp
+chown hduser:hadoop /app/hadoop/tmp
+sed -i '/<configuration>/d' /usr/local/hadoop/etc/hadoop/core-site.xml
+sed -i '\_</configuration>_d' /usr/local/hadoop/etc/hadoop/core-site.xml
+echo '<configuration>
 <property>
 <name>fs.defaultFS</name>
 <value>hdfs://localhost:9000</value>
@@ -36,12 +36,12 @@ sudo echo '<configuration>
 </property>
 </configuration>' >> /usr/local/hadoop/etc/hadoop/core-site.xml
 
-sudo mkdir -p /usr/local/hadoop_store/hdfs/namenode
-sudo mkdir -p /usr/local/hadoop_store/hdfs/datanode
-sudo chown -R hduser:hadoop /usr/local/hadoop_store
-sudo sed -i '/<configuration>/d' /usr/local/hadoop/etc/hadoop/hdfs-site.xml
-sudo sed -i '\_</configuration>_d' /usr/local/hadoop/etc/hadoop/hdfs-site.xml
-sudo echo '<configuration>
+mkdir -p /usr/local/hadoop_store/hdfs/namenode
+mkdir -p /usr/local/hadoop_store/hdfs/datanode
+chown -R hduser:hadoop /usr/local/hadoop_store
+sed -i '/<configuration>/d' /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+sed -i '\_</configuration>_d' /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+echo '<configuration>
 <property>
   <name>dfs.replication</name>
   <value>1</value>
@@ -58,15 +58,15 @@ sudo echo '<configuration>
  </property>
 </configuration>' >> /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 
-sudo sed -i '/<configuration>/d' /usr/local/hadoop/etc/hadoop/yarn-site.xml
-sudo sed -i '\_</configuration>_d' /usr/local/hadoop/etc/hadoop/yarn-site.xml
-sudo echo '<configuration>
+sed -i '/<configuration>/d' /usr/local/hadoop/etc/hadoop/yarn-site.xml
+sed -i '\_</configuration>_d' /usr/local/hadoop/etc/hadoop/yarn-site.xml
+echo '<configuration>
    <property>
       <name>yarn.nodemanager.aux-services</name>
       <value>mapreduce_shuffle</value>
    </property>
 </configuration>' >> /usr/local/hadoop/etc/hadoop/yarn-site.xml
 
-sudo sed -i '/hadoop1.sh/d' /home/hduser/.bashrc
+sed -i '/hadoop1.sh/d' /home/hduser/.bashrc
 
-sudo reboot now
+reboot now

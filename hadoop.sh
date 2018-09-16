@@ -38,8 +38,8 @@ source /home/hduser/.bashrc
 
 mkdir -p /app/hadoop/tmp
 chown hduser:hadoop /app/hadoop/tmp
-sed  '/<configuration>/d' /usr/local/hadoop/etc/hadoop/core-site.xml
-sed  '+</configuration>+d' /usr/local/hadoop/etc/hadoop/core-site.xml
+sed -i '/<configuration>/d' /usr/local/hadoop/etc/hadoop/core-site.xml
+sed -i '\_</configuration>_d' /usr/local/hadoop/etc/hadoop/core-site.xml
 echo '<configuration>
 <property>
 <name>fs.defaultFS</name>
@@ -54,8 +54,8 @@ echo '<configuration>
 sudo mkdir -p /usr/local/hadoop_store/hdfs/namenode
 sudo mkdir -p /usr/local/hadoop_store/hdfs/datanode
 sudo chown -R hduser:hadoop /usr/local/hadoop_store
-sed  '/<configuration>/d' /usr/local/hadoop/etc/hadoop/hdfs-site.xml
-sed  '+</configuration>+d' /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+sed -i '/<configuration>/d' /usr/local/hadoop/etc/hadoop/core-site.xml
+sed -i '\_</configuration>_d' /usr/local/hadoop/etc/hadoop/core-site.xml
 echo '<configuration>
 <property>
   <name>dfs.replication</name>
@@ -73,8 +73,8 @@ echo '<configuration>
  </property>
 </configuration>' >> /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 
-sed  '/<configuration>/d' /usr/local/hadoop/etc/hadoop/yarn-site.xml
-sed  '+</configuration>+d' /usr/local/hadoop/etc/hadoop/yarn-site.xml
+sed -i '/<configuration>/d' /usr/local/hadoop/etc/hadoop/core-site.xml
+sed -i '\_</configuration>_d' /usr/local/hadoop/etc/hadoop/core-site.xml
 echo '<configuration>
    <property>
       <name>yarn.nodemanager.aux-services</name>

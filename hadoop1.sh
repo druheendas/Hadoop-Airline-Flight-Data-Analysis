@@ -1,7 +1,7 @@
-ssh-keygen -t rsa -P ""
-cp -R /root/.ssh /home/hduser/
-cat /home/hduser/.ssh/id_rsa.pub >> /home/hduser/.ssh/authorized_keys
-chmod 0600 /home/hduser/.ssh/authorized_keys
+#ssh-keygen -t rsa -P ""
+#cp -R /root/.ssh /home/hduser/
+#cat /home/hduser/.ssh/id_rsa.pub >> /home/hduser/.ssh/authorized_keys
+#chmod 0600 /home/hduser/.ssh/authorized_keys
 
 
 wget http://mirrors.fibergrid.in/apache/hadoop/common/stable/hadoop-2.9.1.tar.gz

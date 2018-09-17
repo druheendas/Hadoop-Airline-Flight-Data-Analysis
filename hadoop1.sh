@@ -26,7 +26,8 @@ mkdir -p /app/hadoop/tmp
 chown hduser:hadoop /app/hadoop/tmp
 sed -i '/<configuration>/d' /usr/local/hadoop/etc/hadoop/core-site.xml
 sed -i '\_</configuration>_d' /usr/local/hadoop/etc/hadoop/core-site.xml
-echo '<configuration>
+echo '
+<configuration>
 <property>
 <name>fs.defaultFS</name>
 <value>hdfs://localhost:9000</value>
@@ -35,14 +36,16 @@ echo '<configuration>
 <name>hadoop.tmp.dir</name>
 <value>/app/hadoop/tmp</value>
 </property>
-</configuration>' >> /usr/local/hadoop/etc/hadoop/core-site.xml
+</configuration>
+' >> /usr/local/hadoop/etc/hadoop/core-site.xml
 
 mkdir -p /usr/local/hadoop_store/hdfs/namenode
 mkdir -p /usr/local/hadoop_store/hdfs/datanode
 chown -R hduser:hadoop /usr/local/hadoop_store
 sed -i '/<configuration>/d' /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 sed -i '\_</configuration>_d' /usr/local/hadoop/etc/hadoop/hdfs-site.xml
-echo '<configuration>
+echo '
+<configuration>
 <property>
   <name>dfs.replication</name>
   <value>1</value>
@@ -57,16 +60,19 @@ echo '<configuration>
    <name>dfs.datanode.data.dir</name>
    <value>file:/usr/local/hadoop_store/hdfs/datanode</value>
  </property>
-</configuration>' >> /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+</configuration>
+' >> /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 
 sed -i '/<configuration>/d' /usr/local/hadoop/etc/hadoop/yarn-site.xml
 sed -i '\_</configuration>_d' /usr/local/hadoop/etc/hadoop/yarn-site.xml
-echo '<configuration>
+echo '
+<configuration>
    <property>
       <name>yarn.nodemanager.aux-services</name>
       <value>mapreduce_shuffle</value>
    </property>
-</configuration>' >> /usr/local/hadoop/etc/hadoop/yarn-site.xml
+</configuration>
+' >> /usr/local/hadoop/etc/hadoop/yarn-site.xml
 
 sed -i '/hadoop1.sh/d' /home/hduser/.bashrc
 

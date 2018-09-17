@@ -11,14 +11,17 @@ mkdir -p /usr/local/hadoop
 cd hadoop-2.9.1/
 mv * /usr/local/hadoop
 chown -R hduser:hadoop /usr/local/hadoop
-echo 'export HADOOP_HOME=/usr/local/hadoop
+echo '
+export HADOOP_HOME=/usr/local/hadoop
 export HADOOP_INSTALL=$HADOOP_HOME
 export HADOOP_MAPRED_HOME=$HADOOP_HOME
 export HADOOP_COMMON_HOME=$HADOOP_HOME
 export HADOOP_HDFS_HOME=$HADOOP_HOME
 export YARN_HOME=$HADOOP_HOME
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
-export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin' >> /home/hduser/.bashrc
+export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib"
+' >> /home/hduser/.bashrc
 source /home/hduser/.bashrc
 
 #sed 's+${JAVA_HOME}+/usr/lib/jvm/java-8-oracle+' /usr/local/hadoop/etc/hadoop/hadoop-env.sh
@@ -61,6 +64,10 @@ echo '
    <name>dfs.datanode.data.dir</name>
    <value>file:/usr/local/hadoop_store/hdfs/datanode</value>
  </property>
+ <property>
+  <name>dfs.permissions</name>
+  <value>false</value>
+</property>
 </configuration>
 ' >> /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 

@@ -1,5 +1,6 @@
 ssh-keygen -t rsa -P ""
-cat /root/.ssh/id_rsa.pub >> /home/hduser/.ssh/authorized_keys
+cp /root/.ssh/* /home/hduser/.ssh
+cat /home/hduser/.ssh/id_rsa.pub >> /home/hduser/.ssh/authorized_keys
 chmod 0600 /home/hduser/.ssh/authorized_keys
 
 

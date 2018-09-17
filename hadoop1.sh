@@ -1,6 +1,6 @@
 ssh-keygen -t rsa -P ""
 cp -R /root/.ssh /home/hduser/
-chown hduser:hadoop /home/hduser/.ssh
+chown -R hduser:hadoop /home/hduser/.ssh
 cat /home/hduser/.ssh/id_rsa.pub >> /home/hduser/.ssh/authorized_keys
 chmod 0600 /home/hduser/.ssh/authorized_keys
 

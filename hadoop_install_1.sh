@@ -40,7 +40,7 @@ adduser hduser sudo
 ###############################################################################################
 ###############################################################################################
 # COPYING INSTALLTION SCRIPT TO hduser .BATCHRC FILE 
-cp ~/hadoopSingleNode/hadoop_install_2.sh /home/hduser
+cp ~/Hadoop-Airline-Flight-Data-Analysis/hadoop_install_2.sh /home/hduser
 echo '
 sudo bash hadoop_install_2.sh
 ' >> /home/hduser/.bashrc

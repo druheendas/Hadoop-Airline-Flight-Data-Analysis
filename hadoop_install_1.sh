@@ -66,7 +66,6 @@ echo "###################   EXTRACTING HADOOP   ######################"
 echo "################################################################"
 tar xzf hadoop-2.9.1.tar.gz
 mkdir -p /usr/local/hadoop
-#cd hadoop-2.9.1/
 mv hadoop-2.9.1/* /usr/local/hadoop
 rm -r hadoop-2.9.1
 rm hadoop-2.9.1.tar.gz
@@ -166,10 +165,6 @@ echo '
    </property>
 </configuration>
 ' >> /usr/local/hadoop/etc/hadoop/yarn-site.xml
-###############################################################################################
-###############################################################################################
-# REMOVING AUTOMATIC SCRIPT FROM .BASHRC
-#sed -i '/hadoop_install_2.sh/d' /home/hduser/.bashrc
 
 ###############################################################################################
 ###############################################################################################
@@ -190,51 +185,3 @@ do
    sleep 1
 done
 reboot now
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:"###############################################################################################
-###############################################################################################
-# COPYING INSTALLTION SCRIPT TO hduser .BATCHRC FILE 
-cp ~/Hadoop-Airline-Flight-Data-Analysis/hadoop_install_2.sh /home/hduser
-echo '
-sudo bash hadoop_install_2.sh
-' >> /home/hduser/.bashrc
-source /home/hduser/.bashrc
-
-###############################################################################################
-###############################################################################################
-# REBOOT
-echo 'The machine will reboot, 
-after reboot login to root 
-then from root login to hduser using the password created by you.
-
-'
-echo 'YOUR MACHINE WILL REBOOT IN'
-a=10
-while [ $a -gt 0 ]
-do
-   echo $a
-   a=`expr $a - 1`
-   sleep 1
-done
-reboot now"
